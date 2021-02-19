@@ -4,5 +4,3 @@ node_modules
 coverage/
 # ignore cli binary output
 cli/
-# ignore dist/ output
-dist/
