@@ -248,10 +248,10 @@ var require_core = __commonJS((exports2) => {
     error(message);
   }
   exports2.setFailed = setFailed2;
-  function isDebug() {
+  function isDebug2() {
     return process.env["RUNNER_DEBUG"] === "1";
   }
-  exports2.isDebug = isDebug;
+  exports2.isDebug = isDebug2;
   function debug(message) {
     command_1.issueCommand("debug", {}, message);
   }
@@ -2078,7 +2078,9 @@ query($after: String) {
 }
 `;
 var getAllIdentities = async ({query: query2, client, after}) => {
-  import_core.info(query2);
+  if (import_core.isDebug()) {
+    import_core.info(JSON.stringify({query: query2, after}, null, 2));
+  }
   const response = await client(query2, {after});
   const {
     edges: identities,
@@ -2106,7 +2108,6 @@ var getParams = () => {
 };
 var main = async () => {
   const {username, organization, github_token: githubToken} = getParams();
-  import_core.info(githubToken);
   try {
     const client = import_graphql.graphql.defaults({
       headers: {
@@ -2118,7 +2119,6 @@ var main = async () => {
     if (user == null ? void 0 : user.identity.samlIdentity.username) {
       import_core.info(`Found a SAML identity for: ${username}: ${JSON.stringify(user, null, 2)}`);
       import_core.setOutput("identity", user.identity.samlIdentity.username);
-      import_core.info(user.identity.samlIdentity.username);
     } else {
       import_core.setFailed("We could not find the identity, enable DEBUG=* to see more details into what went wrong!");
     }

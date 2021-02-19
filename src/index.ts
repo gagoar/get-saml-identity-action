@@ -1,4 +1,4 @@
-import { getInput, setOutput, setFailed, info } from '@actions/core';
+import { getInput, setOutput, setFailed, info, isDebug } from '@actions/core';
 import { Identity, SamlIdentifierProvider } from './utils/guards';
 import { graphql } from '@octokit/graphql';
 
@@ -34,7 +34,10 @@ type GetAllIdentities = (options: {
 }) => Promise<Identity[]>;
 
 const getAllIdentities: GetAllIdentities = async ({ query, client, after }) => {
-  info(query);
+  if (isDebug()) {
+    info(JSON.stringify({ query, after }, null, 2));
+  }
+
   const response = await client<SamlIdentifierProvider>(query, { after });
 
   const {
@@ -64,7 +67,6 @@ const getParams = () => {
 
 export const main = async (): Promise<void> => {
   const { username, organization, github_token: githubToken } = getParams();
-  info(githubToken);
   try {
     const client = graphql.defaults({
       headers: {
@@ -78,7 +80,6 @@ export const main = async (): Promise<void> => {
     if (user?.identity.samlIdentity.username) {
       info(`Found a SAML identity for: ${username}: ${JSON.stringify(user, null, 2)}`);
       setOutput('identity', user.identity.samlIdentity.username);
-      info(user.identity.samlIdentity.username);
     } else {
       setFailed('We could not find the identity, enable DEBUG=* to see more details into what went wrong!');
     }
