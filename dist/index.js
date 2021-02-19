@@ -2118,6 +2118,7 @@ var main = async () => {
     if (user == null ? void 0 : user.identity.samlIdentity.username) {
       import_core.info(`Found a SAML identity for: ${username}: ${JSON.stringify(user, null, 2)}`);
       import_core.setOutput("identity", user.identity.samlIdentity.username);
+      import_core.info(user.identity.samlIdentity.username);
     } else {
       import_core.setFailed("We could not find the identity, enable DEBUG=* to see more details into what went wrong!");
     }

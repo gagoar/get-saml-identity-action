@@ -78,6 +78,7 @@ export const main = async (): Promise<void> => {
     if (user?.identity.samlIdentity.username) {
       info(`Found a SAML identity for: ${username}: ${JSON.stringify(user, null, 2)}`);
       setOutput('identity', user.identity.samlIdentity.username);
+      info(user.identity.samlIdentity.username);
     } else {
       setFailed('We could not find the identity, enable DEBUG=* to see more details into what went wrong!');
     }
