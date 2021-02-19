@@ -4,7 +4,7 @@ import { graphql } from '@octokit/graphql';
 
 const query = (organization: string) => `
 query($after: String) {
-  organization(login: ${organization}) {
+  organization(login: "${organization}") {
     samlIdentityProvider {
       externalIdentities(first: 100, after: $after) {
         pageInfo {
@@ -30,10 +30,11 @@ query($after: String) {
 type GetAllIdentities = (options: {
   query: string;
   client: typeof graphql;
-  after: number | null;
+  after: string | null;
 }) => Promise<Identity[]>;
 
 const getAllIdentities: GetAllIdentities = async ({ query, client, after }) => {
+  info(query);
   const response = await client<SamlIdentifierProvider>(query, { after });
 
   const {

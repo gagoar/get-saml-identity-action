@@ -2,7 +2,7 @@ import { isPlainObject } from 'is-plain-object';
 export const isString = (value: unknown): value is string => typeof value === 'string';
 export const isObject = (o: unknown): o is { [name: string]: unknown } => isPlainObject(o);
 export type Identity = {
-  cursor: number;
+  cursor: string;
   identity: {
     user: { login: string };
     samlIdentity: {
