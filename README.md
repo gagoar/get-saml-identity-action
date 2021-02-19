@@ -1,14 +1,14 @@
 <p align="center">
-  <h3 align="center">Template for typescript applications</h3>
+  <h3 align="center">Get SAML Identity Action</h3>
 
   <p align="center">
-     ⚙ Template repository for typescript applications meant to run in node ⚙
+     📇 Need to get the single-sign on email/identity for a GitHub user in your organization? now you can 🆔
     <br />
-    <a href="https://github.com/gagoar/ts-node-template#table-of-contents"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/gagoar/get-saml-identity-action#table-of-contents"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/gagoar/ts-node-template/issues">Report Bug</a>
+    <a href="https://github.com/gagoar/get-saml-identity-action/issues">Report Bug</a>
     ·
-    <a href="https://github.com/gagoar/ts-node-template/issues">Request Feature</a>
+    <a href="https://github.com/gagoar/get-saml-identity-action/issues">Request Feature</a>
   </p>
 </p>
 
@@ -23,11 +23,8 @@
 
 ### Built With
 
-- [ncc](https://github.com/vercel/ncc/)
+- [esbuild](https://github.com/evanw/esbuild)
 - [jest](https://github.com/facebook/jest)
-- [ora](https://github.com/sindresorhus/ora)
-- [commander](https://github.com/tj/commander.js/)
-- [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
 ## Contributing
 

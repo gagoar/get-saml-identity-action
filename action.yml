@@ -1,0 +1,21 @@
+name: 'get-saml-identity-action'
+description: '📇 Need to get the single-sign on email/identity for a GitHub user in your organization? now you can 🆔'
+branding:
+  icon: arrow-up-right
+  color: orange
+inputs:
+  github_token:
+    description: 'github_token, with admin permissions'
+    required: true
+  username:
+    description: 'user name frequently available on github.event.sender.login'
+    required: true
+  organization:
+    description: 'this is the organization name or login for github'
+    required: true
+outputs:
+  identity:
+    description: 'It will return the saml identity found'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
