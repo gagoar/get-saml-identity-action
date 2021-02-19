@@ -64,7 +64,7 @@ const getParams = () => {
 
 export const main = async (): Promise<void> => {
   const { username, organization, github_token: githubToken } = getParams();
-
+  info(githubToken);
   try {
     const client = graphql.defaults({
       headers: {

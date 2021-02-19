@@ -2106,6 +2106,7 @@ var getParams = () => {
 };
 var main = async () => {
   const {username, organization, github_token: githubToken} = getParams();
+  import_core.info(githubToken);
   try {
     const client = import_graphql.graphql.defaults({
       headers: {
